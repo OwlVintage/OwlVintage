@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- OTA -->
+    <string name="ota_checking">Verificando atualizações</string>
+    <string name="ota_while_checking">Isso pode demorar um pouco, aguarde até que seja concluído</string>
+    <string name="ota_an_unknown_error">Um erro desconhecido ocorreu ao baixar a atualização, por favor, tente novamente mais tarde.</string>
+
+    <!-- LoginFragment -->
+    <string name="login_fragment_title">@string/app_name</string>
+    <string name="login_fragment_subtitle">Faça login com sua conta</string>
+    <string name="login_fragment_email_hint">Endereço de e-mail</string>
+    <string name="login_fragment_password_hint">Senha</string>
+    <string name="login_fragment_login_button">Entrar</string>
+    <string name="login_fragment_was_not_possible_to_authenticate">Não foi possível autenticar com sua conta devido a um erro interno na aplicação, entre em contato com o desenvolvedor e solicite suporte.</string>
+
+    <!-- TimelineFragment -->
+    <string name="timeline_fragment_error_message">Não foi possível carregar a linha do tempo</string>
+    <string name="timeline_fragment_error_try_again">Tentar novamente</string>
+
+    <!-- Enviar novo status -->
+    <string name="layout_status_publish">Publicar</string>
+    <string name="layout_status_publish_hint">O que está acontecendo agora?</string>
+    <string name="layout_status_publish_error_message">Não foi possível publicar seu status devido a um erro desconhecido, por favor, entre em contato com o desenvolvedor</string>
+
+    <!-- Menu -->
+    <string name="timeline_fragment_title">Linha do Tempo</string>
+    <string name="friends_fragment_title">Amigos</string>
+
+    <!-- Comum -->
+    <string name="common_error_title">Um erro ocorreu</string>
+    <string name="common_error_message">Um erro desconhecido ocorreu e uma resposta não pôde ser obtida do servidor, por favor, entre em contato com o desenvolvedor e tente novamente mais tarde.</string>
+    <string name="common_ok_button">OK</string>
+    <string name="common_close_button">Fechar</string>
+</resources>

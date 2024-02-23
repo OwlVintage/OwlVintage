@@ -1,0 +1,46 @@
+[versions]
+
+# Android Plugins
+akp = "2.0.0-Beta3"
+agp = "8.4.0-alpha10"
+core-splashscreen = "1.0.1"
+ksp = "2.0.0-Beta3-1.0.17"
+
+# Android Libraries
+appcompat = "1.6.1"
+glide-compiler = "5.0.0-rc01"
+glide = "4.16.0"
+logging-interceptor = "4.12.0"
+material = "1.11.0"
+activity = "1.8.2"
+constraintlayout = "2.1.4"
+corektx = "1.12.0"
+coroutines = "1.8.0"
+okio = "3.8.0"
+security = "1.1.0-alpha06"
+retrofit = "2.9.0"
+swiperefreshlayout = "1.1.0"
+
+[libraries]
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "core-splashscreen" }
+glide-compiler = { module = "com.github.bumptech.glide:ksp", version.ref = "glide-compiler" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+glideLib = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logging-interceptor" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+corektx = { group = "androidx.core", name = "core-ktx", version.ref = "corektx" }
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "logging-interceptor" }
+okio = { module = "com.squareup.okio:okio", version.ref = "okio" }
+security = { module = "androidx.security:security-crypto", version.ref = "security" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+androidKotlin = { id = "org.jetbrains.kotlin.android", version.ref = "akp" }
+googleKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

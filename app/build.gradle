@@ -1,0 +1,91 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.androidKotlin)
+    alias(libs.plugins.googleKsp)
+}
+
+android {
+    namespace rootProject.ext.appId
+    compileSdk rootProject.ext.compileSdk
+
+    defaultConfig {
+        applicationId rootProject.ext.appId
+        minSdkVersion rootProject.ext.minSdk
+        targetSdkVersion rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        vectorDrawables.useSupportLibrary true
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(rootProject.project.ext.jksPath)
+            storePassword rootProject.project.ext.jksPassword
+            keyAlias rootProject.project.ext.jksAlias
+            keyPassword rootProject.project.ext.jksKeyPassword
+
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing true
+            enableV4Signing true
+
+            packagingOptions {
+                exclude 'META-INF/**'
+                exclude 'kotlin/**'
+                exclude '**.json'
+                exclude '**.properties'
+                exclude 'DebugProbesKt.bin'
+                exclude 'google/**'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            debuggable false
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlin {
+        jvmToolchain(21)
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation libs.activity
+    implementation libs.appcompat
+    implementation libs.constraintlayout
+    implementation libs.core.splashscreen
+    implementation libs.converter.gson
+    implementation libs.corektx
+    implementation libs.glideLib
+    implementation libs.logging.interceptor
+    implementation libs.material
+    implementation libs.okhttp
+    implementation libs.okio
+
+    implementation (libs.retrofit) {
+        exclude group: 'com.squareup.okhttp3', module: 'okhttp'
+    }
+
+    implementation libs.security
+    implementation libs.swiperefreshlayout
+
+    ksp libs.glide.compiler
+
+    implementation project(":common")
+}

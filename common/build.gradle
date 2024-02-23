@@ -1,0 +1,29 @@
+plugins {
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.androidKotlin)
+}
+
+android {
+    compileSdk rootProject.ext.compileSdk
+
+    namespace rootProject.ext.appId + ".common"
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    kotlin {
+        jvmToolchain(21)
+    }
+}
+
+dependencies {
+    implementation libs.corektx
+    implementation libs.coroutines
+}

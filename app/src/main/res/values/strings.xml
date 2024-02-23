@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The name of the application. -->
+    <string name="app_name" translatable="false">OwlVintage</string>
+
+    <!-- OTA -->
+    <string name="ota_checking">Checking for updates</string>
+    <string name="ota_while_checking">This may take a while, wait until it\'s done</string>
+    <string name="ota_an_unknown_error">An unknown error occurred while downloading the update, please try again later.</string>
+
+    <!-- LoginFragment -->
+    <string name="login_fragment_title">@string/app_name</string>
+    <string name="login_fragment_subtitle">Log-in with your account</string>
+    <string name="login_fragment_email_hint">E-mail address</string>
+    <string name="login_fragment_password_hint">Password</string>
+    <string name="login_fragment_login_button">Log-in</string>
+    <string name="login_fragment_was_not_possible_to_authenticate">It was not possible to authenticate with your account because of an internal error in the application, contact the developer and ask for support.</string>
+
+    <!-- TimelineFragment -->
+    <string name="timeline_fragment_error_message">It was not possible to load the timeline</string>
+    <string name="timeline_fragment_error_try_again">Try again</string>
+
+    <!-- Send new status -->
+    <string name="layout_status_publish">Publish</string>
+    <string name="layout_status_publish_hint">What\'s happening now?</string>
+    <string name="layout_status_publish_error_message">Could not publish your status due to unknown error, please contact developer</string>
+
+    <!-- Menu -->
+    <string name="timeline_fragment_title">Timeline</string>
+    <string name="friends_fragment_title">Friends</string>
+
+    <!-- Common -->
+    <string name="common_error_title">An error has occurred</string>
+    <string name="common_error_message">An unknown error occurred and a response could not be obtained from the server, please contact the developer and try again later.</string>
+    <string name="common_ok_button">OK</string>
+    <string name="common_close_button">Close</string>
+</resources>

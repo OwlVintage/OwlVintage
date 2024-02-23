@@ -1,0 +1,43 @@
+/**
+ * @author Zestski <zestski@proton.me>
+ */
+
+buildscript {
+    var keystoreFile = file("keystore.prop")
+
+    var keystoreProperties = new Properties()
+
+    if (keystoreFile.exists()) {
+        keystoreProperties.load(new FileInputStream(keystoreFile))
+    }
+
+    project.ext {
+        compileSdk = 34
+        appId = "br.zestski.owlvintage"
+        minSdk = 26
+        targetSdk = 34
+        versionCode = 5
+        versionName = "1.0.4"
+        project.ext.jksPath = keystoreProperties.getProperty("jksPath", "")
+        project.ext.jksPassword = keystoreProperties.getProperty("jksPassword", "")
+        project.ext.jksAlias = keystoreProperties.getProperty("jksAlias", "")
+        project.ext.jksKeyPassword = keystoreProperties.getProperty("jksKeyPassword", "")
+    }
+}
+
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.androidKotlin) apply false
+    alias(libs.plugins.googleKsp) apply false
+}
+
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile).tap {
+            configureEach {
+                options.compilerArgs << "-Xlint:deprecation"
+            }
+        }
+    }
+}

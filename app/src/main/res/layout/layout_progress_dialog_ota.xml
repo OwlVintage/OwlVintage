@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="?dialogPreferredPadding"
+    tools:ignore="PrivateResource">
+
+    <!-- TODO: Convert to ConstraintLayout -->
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/layout_progress_dialog_ota_progress_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        app:indeterminateAnimationType="contiguous"
+        app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/layout_progress_dialog_ota_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/layout_progress_dialog_ota_progress_circle"
+        android:fontFamily="@font/nexatext_trial_bold"
+        android:text="@string/ota_checking"
+        android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/layout_progress_dialog_ota_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_progress_dialog_ota_title"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@id/layout_progress_dialog_ota_progress_circle"
+        android:fontFamily="@font/nexatext_trial_regular"
+        android:text="@string/ota_while_checking"
+        android:textAppearance="?attr/textAppearanceBodyMedium" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/layout_progress_dialog_ota_progress_linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_progress_dialog_ota_message"
+        android:layout_marginStart="65.1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:trackCornerRadius="@dimen/mtrl_progress_indicator_full_rounded_corner_radius" />
+</RelativeLayout>

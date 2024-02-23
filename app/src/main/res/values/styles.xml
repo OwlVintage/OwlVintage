@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TabLayoutOwlStyle" parent="@android:style/TextAppearance.Small">
+        <item name="android:fontFamily">@font/nexatext_trial_regular</item>
+    </style>
+
+    <style name="BottomNavigationViewOwlStyle">
+        <item name="android:fontFamily">@font/nexatext_trial_regular</item>
+    </style>
+</resources>

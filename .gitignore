@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+/.kotlin
+.DS_Store
+/build
+/app/build
+/app/release
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+/app/zestski.jks
+keystore.prop

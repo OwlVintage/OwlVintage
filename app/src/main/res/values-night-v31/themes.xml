@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="ToolbarTheme.Home" parent="ThemeOverlay.Material3.DynamicColors.Dark">
+        <item name="android:fontFamily">@font/nexatext_trial_bold</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.Material3.DynamicColors.Dark">
+        <!-- Navigation/Status Bar colors -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Disable StatusBar -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+</resources>

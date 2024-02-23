@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <font
+        android:font="@font/nexatext_trial_light"
+        android:fontWeight="300"
+        app:font="@font/nexatext_trial_light"
+        app:fontWeight="300" />
+
+    <font
+        android:font="@font/nexatext_trial_regular"
+        android:fontWeight="400"
+        app:font="@font/nexatext_trial_regular"
+        app:fontWeight="400" />
+
+    <font
+        android:font="@font/nexatext_trial_bold"
+        android:fontWeight="700"
+        app:font="@font/nexatext_trial_bold"
+        app:fontWeight="700" />
+
+    <font
+        android:font="@font/nexatext_trial_extrabold"
+        android:fontWeight="700"
+        app:font="@font/nexatext_trial_extrabold"
+        app:fontWeight="700" />
+
+</font-family>

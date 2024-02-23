@@ -16,8 +16,8 @@ buildscript {
         appId = "br.zestski.owlvintage"
         minSdk = 26
         targetSdk = 34
-        versionCode = 5
-        versionName = "1.0.4"
+        versionCode = 6
+        versionName = "1.0.5"
         project.ext.jksPath = keystoreProperties.getProperty("jksPath", "")
         project.ext.jksPassword = keystoreProperties.getProperty("jksPassword", "")
         project.ext.jksAlias = keystoreProperties.getProperty("jksAlias", "")

@@ -1,6 +1,6 @@
 package br.zestski.owlvintage.fragment.home;
 
-import static br.zestski.owlvintage.OwlerApplication.getSpString;
+import static br.zestski.owlvintage.OwlerApplication.getAccountManager;
 import static br.zestski.owlvintage.util.ResponseUtil.responseFallback;
 
 import android.os.Bundle;
@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Objects;
 
 import br.zestski.owlvintage.R;
-import br.zestski.owlvintage.common.Constants;
 import br.zestski.owlvintage.databinding.FragmentHomeBinding;
 import br.zestski.owlvintage.fragment.home.adapter.RecyclerViewAdapter;
 import br.zestski.owlvintage.fragment.home.adapter.ViewPagerAdapter;
@@ -101,7 +100,10 @@ public class HomeFragment extends Fragment implements TimelineLoadObserver {
             publishButton.setOnClickListener(v1 -> {
                 var apiService = RetrofitClient.getClientForOwlerCloud().create(OwlerApiService.class);
 
-                var authorizationKey = getSpString(Constants.SP_AUTHORIZATION_KEY);
+                var accountManager = getAccountManager();
+                var defaultAccount = accountManager.getDefaultAccount();
+
+                var authorizationKey = defaultAccount.getEncryptedAuth();
 
                 var sendStatus = apiService.sendStatus(authorizationKey, tilStatus.getEditText().getText().toString(), requireActivity().getString(R.string.app_name));
 

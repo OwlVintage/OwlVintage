@@ -15,6 +15,8 @@
     <string name="login_fragment_password_hint">Password</string>
     <string name="login_fragment_login_button">Log-in</string>
     <string name="login_fragment_was_not_possible_to_authenticate">It was not possible to authenticate with your account because of an internal error in the application, contact the developer and ask for support.</string>
+    <string name="login_fragment_already_have_this_account_title">Before you continue</string>
+    <string name="login_fragment_already_have_this_account_message">You already have an account with this e-mail address! Do you just want to update your credentials? If the credentials are the same, they will be updated in the same way.</string>
 
     <!-- TimelineFragment -->
     <string name="timeline_fragment_error_message">It was not possible to load the timeline</string>
@@ -33,5 +35,7 @@
     <string name="common_error_title">An error has occurred</string>
     <string name="common_error_message">An unknown error occurred and a response could not be obtained from the server, please contact the developer and try again later.</string>
     <string name="common_ok_button">OK</string>
+    <string name="common_yes_button">Yes</string>
+    <string name="common_no_button">No</string>
     <string name="common_close_button">Close</string>
 </resources>

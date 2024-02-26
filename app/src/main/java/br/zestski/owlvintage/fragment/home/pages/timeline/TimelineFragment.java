@@ -1,6 +1,6 @@
 package br.zestski.owlvintage.fragment.home.pages.timeline;
 
-import static br.zestski.owlvintage.OwlerApplication.getSpString;
+import static br.zestski.owlvintage.OwlerApplication.getAccountManager;
 import static br.zestski.owlvintage.common.utils.CoroutineUtil.execute;
 
 import android.annotation.SuppressLint;
@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Objects;
 
 import br.zestski.owlvintage.R;
-import br.zestski.owlvintage.common.Constants;
 import br.zestski.owlvintage.databinding.FragmentTimelineBinding;
 import br.zestski.owlvintage.fragment.home.HomeFragment;
 import br.zestski.owlvintage.fragment.home.adapter.RecyclerViewAdapter;
@@ -115,7 +114,10 @@ public class TimelineFragment extends Fragment implements TimelineUpdateObserver
 
             var apiService = RetrofitClient.getClientForOwlerCloud().create(OwlerApiService.class);
 
-            var authorizationKey = getSpString(Constants.SP_AUTHORIZATION_KEY);
+            var accountManager = getAccountManager();
+            var defaultAccount = accountManager.getDefaultAccount();
+
+            var authorizationKey = Objects.requireNonNull(defaultAccount).getEncryptedAuth();
 
             Call<List<StatusModel>> timelineCall;
 

@@ -12,6 +12,8 @@
     <string name="login_fragment_password_hint">Senha</string>
     <string name="login_fragment_login_button">Entrar</string>
     <string name="login_fragment_was_not_possible_to_authenticate">Não foi possível autenticar com sua conta devido a um erro interno na aplicação, entre em contato com o desenvolvedor e solicite suporte.</string>
+    <string name="login_fragment_already_have_this_account_title">Antes de continuar</string>
+    <string name="login_fragment_already_have_this_account_message">Já tem uma conta com este e-mail! Pretende apenas atualizar as suas credenciais? Se as credenciais forem as mesmas, serão atualizadas da mesma forma.</string>
 
     <!-- TimelineFragment -->
     <string name="timeline_fragment_error_message">Não foi possível carregar a linha do tempo</string>
@@ -30,5 +32,7 @@
     <string name="common_error_title">Um erro ocorreu</string>
     <string name="common_error_message">Um erro desconhecido ocorreu e uma resposta não pôde ser obtida do servidor, por favor, entre em contato com o desenvolvedor e tente novamente mais tarde.</string>
     <string name="common_ok_button">OK</string>
+    <string name="common_yes_button">Sim</string>
+    <string name="common_no_button">Não</string>
     <string name="common_close_button">Fechar</string>
 </resources>

@@ -1,6 +1,6 @@
 package br.zestski.owlvintage.fragment.splash;
 
-import static br.zestski.owlvintage.OwlerApplication.getSpBoolean;
+import static br.zestski.owlvintage.OwlerApplication.getAccountManager;
 import static br.zestski.owlvintage.common.utils.CoroutineUtil.execute;
 import static br.zestski.owlvintage.util.ResponseUtil.responseFallback;
 
@@ -32,7 +32,6 @@ import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import br.zestski.owlvintage.R;
-import br.zestski.owlvintage.common.Constants;
 import br.zestski.owlvintage.databinding.FragmentSplashBinding;
 import br.zestski.owlvintage.fragment.home.HomeFragment;
 import br.zestski.owlvintage.fragment.login.LoginFragment;
@@ -254,12 +253,14 @@ public class SplashFragment extends Fragment {
     }
 
     private void switchFragment() {
-        var fragment = getSpBoolean(Constants.SP_IS_USER_AUTHENTICATED)
-                ? new HomeFragment()
-                : new LoginFragment();
+        var accountManager = getAccountManager();
+
+        Fragment newFragment = (accountManager.getDefaultAccount() == null)
+                ? new LoginFragment()
+                : new HomeFragment();
 
         getParentFragmentManager().beginTransaction()
-                .replace(R.id.activity_main_fragment_container, fragment)
+                .replace(R.id.activity_main_fragment_container, newFragment)
                 .addToBackStack(null)
                 .commitAllowingStateLoss();
     }

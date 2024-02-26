@@ -1,12 +1,11 @@
 package br.zestski.owlvintage.fragment.login;
 
-import static br.zestski.owlvintage.OwlerApplication.setSpBoolean;
-import static br.zestski.owlvintage.OwlerApplication.setSpString;
+import static br.zestski.owlvintage.OwlerApplication.getAccountManager;
 import static br.zestski.owlvintage.common.utils.CoroutineUtil.execute;
+import static br.zestski.owlvintage.util.B64Util.encodeBase64;
 import static br.zestski.owlvintage.util.ResponseUtil.responseFallback;
 
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +23,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 
 import br.zestski.owlvintage.R;
-import br.zestski.owlvintage.common.Constants;
+import br.zestski.owlvintage.account.UserAccountImpl;
 import br.zestski.owlvintage.databinding.FragmentLoginBinding;
 import br.zestski.owlvintage.fragment.login.watcher.EmailPasswordWatcher;
 import br.zestski.owlvintage.fragment.splash.SplashFragment;
@@ -95,12 +94,10 @@ public class LoginFragment extends Fragment {
 
             var apiService = RetrofitClient.getClientForOwlerCloud().create(OwlerApiService.class);
 
-            var authorizationKey = String.format("Basic %s",
-                    encodeBase64(String.format("%s:%s",
-                            Objects.requireNonNull(tilEtEmail.getEditText()).getText().toString(),
-                            Objects.requireNonNull(tilEtPassword.getEditText()).getText().toString()
-                    ))
-            );
+            var email = Objects.requireNonNull(tilEtEmail.getEditText()).getText().toString();
+            var password = Objects.requireNonNull(tilEtPassword.getEditText()).getText().toString();
+
+            var authorizationKey = String.format("Basic %s", encodeBase64(String.format("%s:%s", email, password)));
 
             var authApiCall = apiService.verifyCredentials(new String(authorizationKey.getBytes(StandardCharsets.UTF_8)));
 
@@ -113,13 +110,31 @@ public class LoginFragment extends Fragment {
                     var authenticationResponse = responseFallback(response, APIResponse.class);
 
                     if (response.isSuccessful()) {
-                        setSpString(Constants.SP_AUTHORIZATION_KEY, authorizationKey);
-                        setSpBoolean(Constants.SP_IS_USER_AUTHENTICATED, true);
+                        var accountManager = getAccountManager();
 
-                        requireActivity().getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.activity_main_fragment_container, new SplashFragment())
-                                .addToBackStack(null)
-                                .commitAllowingStateLoss();
+                        var newUserAccount = new UserAccountImpl("", email, password);
+
+                        for (var account : accountManager.getAccounts()) {
+                            if (account.getEmail().equals(newUserAccount.getEmail())) {
+                                new MaterialAlertDialogBuilder(requireContext())
+                                        .setTitle(getString(R.string.login_fragment_already_have_this_account_title))
+                                        .setMessage(getString(R.string.login_fragment_already_have_this_account_message))
+                                        .setPositiveButton(getString(R.string.common_yes_button), (d, w) -> {
+                                            accountManager.removeAccount(account);
+                                            accountManager.addAccount(newUserAccount);
+                                            switchToSplashFragment();
+                                        })
+                                        .setNegativeButton(getString(R.string.common_no_button), null)
+                                        .setCancelable(false)
+                                        .create().show();
+                                return;
+                            }
+                        }
+
+                        accountManager.addAccount(newUserAccount);
+                        accountManager.setDefaultAccount(newUserAccount);
+
+                        switchToSplashFragment();
                     } else {
                         new MaterialAlertDialogBuilder(requireContext())
                                 .setTitle(getString(R.string.common_error_title))
@@ -147,6 +162,13 @@ public class LoginFragment extends Fragment {
                 }
             });
         }));
+    }
+
+    private void switchToSplashFragment() {
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_main_fragment_container, new SplashFragment())
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
     }
 
     private void shrinkAndDisableFab() {
@@ -177,11 +199,5 @@ public class LoginFragment extends Fragment {
             tilEtEmail.setEnabled(true);
             tilEtPassword.setEnabled(true);
         });
-    }
-
-    private String encodeBase64(String input) {
-        var bytes = input.getBytes();
-        var encodedBytes = Base64.encode(bytes, Base64.NO_WRAP);
-        return new String(encodedBytes);
     }
 }

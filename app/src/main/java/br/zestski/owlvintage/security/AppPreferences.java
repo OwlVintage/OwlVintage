@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Helper class to manage application preferences.
@@ -70,8 +71,12 @@ public class AppPreferences {
      * @return The string value, or null if the key is not found.
      */
     public String getString(
-            @NonNull String key
+            @NonNull String key,
+            @Nullable String defValue
     ) {
+        if (defValue != null)
+            return sharedPreferences.getString(key, defValue);
+
         return sharedPreferences.getString(key, null);
     }
 }

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 /**
  * Represents an embed model containing information about embedded content.
+ *
  * @author Zestski
  */
 @SuppressWarnings("unused")
